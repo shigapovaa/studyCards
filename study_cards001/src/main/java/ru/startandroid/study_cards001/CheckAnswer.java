@@ -11,17 +11,16 @@ import android.widget.TextView;
 
 public class CheckAnswer extends AppCompatActivity implements View.OnClickListener{
 
-    Button backtolevel;
+    Button trueB,falseB;
     TextView ansver;
     String s;
-    CheckBox cb;
+
     boolean transfer; //true - перенести на лвл выше false - перенос на 1 лвл
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_answer);
-        cb = (CheckBox) findViewById(R.id.checkBox);
         switch (MainActivity.n){
             case 1:
                 s = Level1.avswer[Level1.number];
@@ -45,8 +44,10 @@ public class CheckAnswer extends AppCompatActivity implements View.OnClickListen
                 s = Level7.avswer[Level7.number];
                 break;
         }
-        backtolevel = (Button) findViewById(R.id.backtolevel);
-        backtolevel.setOnClickListener(this);
+        trueB = (Button) findViewById(R.id.backtolevel);
+        trueB.setOnClickListener(this);
+        falseB = (Button) findViewById(R.id.falseB);
+        falseB.setOnClickListener(this);
         ansver = (TextView) findViewById(R.id.ansver);
         ansver.setText(s);
     }
@@ -55,10 +56,12 @@ public class CheckAnswer extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.backtolevel:
-                if (cb.isChecked()){
-                    transfer = true;
-                }
-                else transfer = false;
+                transfer = true;
+                startActivity(MainActivity.intent[MainActivity.n]);
+                finish();
+                break;
+            case R.id.falseB:
+                transfer = false;
                 startActivity(MainActivity.intent[MainActivity.n]);
                 finish();
                 break;

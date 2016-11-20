@@ -24,16 +24,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <CheckBox
-                    android:text="Right?"
+                <Button
+                    android:text="False"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox"
+                    android:id="@+id/falseB"
                     android:layout_weight="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored" />
 
                 <Button
-                    android:text="Next Card"
+                    android:text="True"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/backtolevel"
