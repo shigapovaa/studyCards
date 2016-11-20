@@ -25,22 +25,20 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:text="False"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/falseB"
-                    android:layout_weight="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored" />
-
-                <Button
-                    android:text="True"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/backtolevel"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+                    style="@style/Widget.AppCompat.Button" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/falseB"
+                    android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    style="@style/Widget.AppCompat.Button" />
 
             </LinearLayout>
 
