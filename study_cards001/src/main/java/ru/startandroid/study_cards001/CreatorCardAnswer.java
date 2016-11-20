@@ -13,6 +13,7 @@ public class CreatorCardAnswer extends AppCompatActivity implements View.OnClick
 
     EditText answer;
     Button save;
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +21,23 @@ public class CreatorCardAnswer extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.creatorcardanswer);
         save = (Button) findViewById(R.id.save);
         save.setOnClickListener(this);
+        answer = (EditText) findViewById(R.id.answer);
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.save:
+                s = answer.getText() + "";
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                finish();
+
                 break;
             default:
                 break;
         }
     }
+
+
 }

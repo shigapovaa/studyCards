@@ -15,7 +15,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     FloatingActionButton fab;
     Button[]  level = new Button[7];
-    public static Intent[]  intent = new Intent[7];
+    public static Intent[]  intent = new Intent[8];
+    public static int n;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,30 +55,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.level1:
                 intent[1] = new Intent(this, Level1.class);
+                n = 1;
                 startActivity(intent[1]);
                 break;
             case R.id.level2:
                 intent[2] = new Intent(this, Level2.class);
+                n = 2;
                 startActivity(intent[2]);
                 break;
             case R.id.level3:
                 intent[3] = new Intent(this, Level3.class);
+                n = 3;
                 startActivity(intent[3]);
                 break;
             case R.id.level4:
                 intent[4] = new Intent(this, Level4.class);
+                n = 4;
                 startActivity(intent[4]);
                 break;
             case R.id.level5:
                 intent[5] = new Intent(this, Level5.class);
+                n = 5;
                 startActivity(intent[5]);
                 break;
             case R.id.level6:
                 intent[6] = new Intent(this, Level6.class);
+                n = 6;
                 startActivity(intent[6]);
                 break;
             case R.id.level7:
                 intent[7] = new Intent(this, Level7.class);
+                n = 7;
                 startActivity(intent[7]);
                 break;
             default:

@@ -18,7 +18,9 @@
             <Button
                 android:id="@+id/card"
                 android:layout_height="1dp"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored" />
 
             <LinearLayout
                 android:layout_width="match_parent"
