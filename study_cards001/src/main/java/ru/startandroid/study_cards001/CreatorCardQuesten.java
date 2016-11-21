@@ -30,6 +30,7 @@ public class CreatorCardQuesten extends AppCompatActivity implements View.OnClic
                 s = questen.getText() + "";  //cчитывание введённого
                 Intent intent = new Intent(this, CreatorCardAnswer.class);
                 startActivity(intent);
+                finish();
                 break;
             default:
                 break;

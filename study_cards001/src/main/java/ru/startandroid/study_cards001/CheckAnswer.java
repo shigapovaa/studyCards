@@ -8,10 +8,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import java.util.logging.Level;
 
-public class CheckAnswer extends AppCompatActivity implements View.OnClickListener{
 
-    Button trueB,falseB;
+public class CheckAnswer extends AppCompatActivity implements View.OnClickListener {
+
+    Button trueB, falseB;
     TextView ansver;
     String s;
 
@@ -21,7 +23,7 @@ public class CheckAnswer extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_answer);
-        switch (MainActivity.n){
+        switch (MainActivity.n) {
             case 1:
                 s = Level1.avswer[Level1.number];
                 break;
@@ -67,6 +69,5 @@ public class CheckAnswer extends AppCompatActivity implements View.OnClickListen
                 break;
         }
     }
-
 
 }
