@@ -3,7 +3,6 @@ package ru.startandroid.study_cards001;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,8 +13,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     FloatingActionButton fab;
-    Button[]  level = new Button[7];
-    public static Intent[]  intent = new Intent[8];
+    Button[] level = new Button[7];
+    public static Intent[] intent = new Intent[8];
     public static int n;
 
 
@@ -90,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             default:
                 break;
-
         }
     }
 
@@ -117,7 +115,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }
 

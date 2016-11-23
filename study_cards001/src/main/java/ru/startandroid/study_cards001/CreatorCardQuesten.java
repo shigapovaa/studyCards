@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import ru.startandroid.study_cards001.database.DbAdapter;
+
 
 public class CreatorCardQuesten extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +31,9 @@ public class CreatorCardQuesten extends AppCompatActivity implements View.OnClic
             case R.id.transferToAnswer:
                 s = questen.getText() + "";  //cчитывание введённого
                 Intent intent = new Intent(this, CreatorCardAnswer.class);
+
+                intent.putExtra(DbAdapter.KEY_QUESTION, s);
+
                 startActivity(intent);
                 finish();
                 break;

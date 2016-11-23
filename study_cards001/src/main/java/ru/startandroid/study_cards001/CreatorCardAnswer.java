@@ -7,9 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import ru.startandroid.study_cards001.database.DbAdapter;
 
 
-public class CreatorCardAnswer extends AppCompatActivity implements View.OnClickListener{
+public class CreatorCardAnswer extends AppCompatActivity implements View.OnClickListener {
+    private DbAdapter dbHelper;
+
+    private final int level = 1;
 
     EditText answer;
     Button save;
@@ -22,6 +26,7 @@ public class CreatorCardAnswer extends AppCompatActivity implements View.OnClick
         save = (Button) findViewById(R.id.save);
         save.setOnClickListener(this);
         answer = (EditText) findViewById(R.id.answer);
+
     }
 
     @Override
@@ -29,15 +34,26 @@ public class CreatorCardAnswer extends AppCompatActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.save:
                 s = answer.getText() + "";
+
+                dbHelper = new DbAdapter(this);
+                dbHelper.open();
+                String question = getIntent().getStringExtra(DbAdapter.KEY_QUESTION);
+                dbHelper.createTodo(level, question, s);
+
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
-
                 break;
             default:
                 break;
         }
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
+    }
 }

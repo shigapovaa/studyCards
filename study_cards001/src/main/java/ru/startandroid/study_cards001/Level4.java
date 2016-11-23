@@ -1,6 +1,7 @@
 package ru.startandroid.study_cards001;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -8,45 +9,53 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import ru.startandroid.study_cards001.database.DbAdapter;
+
 public class Level4 extends AppCompatActivity implements View.OnClickListener {
+    private DbAdapter dbHelper;
+    private Cursor cursor;
 
-
-    public static int qt = 3; //кол-во карточек (кнопок / строк)
-    public static String [] question = new String[]{"lol","kek","bleat"}; //вводим массив  из  n строк
-    public static String [] avswer = new String[]{"lool","keek","bleeat"};
+    private final int level = 4;
+    //кол-во карточек (кнопок / строк)
+    public static int qt;
+    //вводим массив  из  n строк
+    public static String[] question;
+    public static String[] avswer;
     public static int number;
-    LinearLayout llMain,llMainDel;
-    Button [] btnNew = new Button[qt];//масив кнопок/карточек
-    Button [] btnDelete = new Button[qt];//кнопка для удаления
+    LinearLayout llMain, llMainDel;
+    //масив кнопок/карточек
+    Button[] btnNew;
+    //массив кнопок для удаления
+    Button[] btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.base_activity_4);
+        setContentView(R.layout.base_activity_1);
         llMain = (LinearLayout) findViewById(R.id.llMain);
         llMainDel = (LinearLayout) findViewById(R.id.llMainDelete);
+
+        getInfoDataBase();
+
         reloot();
     }
-
 
 
     @Override
     public void onClick(View v) {
         int i = 0;
-        while (i < qt){
-            if (v == btnNew[i]){
+        while (i < qt) {
+            if (v == btnNew[i]) {
                 number = i;
                 break;
-            }
-            else i++;
+            } else i++;
         }
         i = 0;
-        while (i < qt){
-            if (v == btnDelete[i]){
+        while (i < qt) {
+            if (v == btnDelete[i]) {
                 number = i;
                 break;
-            }
-            else i++;
+            } else i++;
         }
         switch (v.getId()) {
             case R.id.card:
@@ -55,19 +64,17 @@ public class Level4 extends AppCompatActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.deleteCard:
-                shiftArrays();
+
+                dbHelper.open();
+                cursor = dbHelper.fetchAllLevelCards(level);
+                cursor.moveToPosition(number);
+                dbHelper.deleteCard(cursor.getInt(cursor.getColumnIndex(DbAdapter.KEY_ROWID)));
+                getInfoDataBase();
+
                 clean();
                 reloot();
                 break;
         }
-    }
-
-    protected static void shiftArrays() {
-        for (int i = number; i < qt - 1; i++) {
-            question[i] = question[i + 1];
-            avswer[i] = avswer[i + 1];
-        }
-        qt--;
     }
 
     protected void clean() {
@@ -75,8 +82,8 @@ public class Level4 extends AppCompatActivity implements View.OnClickListener {
         llMainDel.removeAllViews();
     }
 
-    protected void reloot(){
-        for (int i = 0; i < qt; i++) { //qt заменить на btnNew.length
+    protected void reloot() {
+        for (int i = 0; i < qt; i++) {
             btnNew[i] = new Button(this);
             btnNew[i].setText(question[i]);
             btnNew[i].setId(R.id.card);
@@ -86,6 +93,33 @@ public class Level4 extends AppCompatActivity implements View.OnClickListener {
             btnDelete[i].setId(R.id.deleteCard);
             llMainDel.addView(btnDelete[i]);
             btnDelete[i].setOnClickListener(this);
+        }
+    }
+
+    //получение информации из базы данных
+    @SuppressWarnings("deprecation")
+    protected void getInfoDataBase() {
+        dbHelper = new DbAdapter(this);
+        dbHelper.open();
+        cursor = dbHelper.fetchAllLevelCards(level);
+        startManagingCursor(cursor);
+        qt = cursor.getCount();
+        btnNew = new Button[qt];
+        btnDelete = new Button[qt];
+        question = new String[qt];
+        avswer = new String[qt];
+        for (int i = 0; i < qt; i++) {
+            cursor.moveToPosition(i);
+            question[i] = cursor.getString(cursor.getColumnIndex(DbAdapter.KEY_QUESTION));
+            avswer[i] = cursor.getString(cursor.getColumnIndex(DbAdapter.KEY_ANSWER));
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbHelper != null) {
+            dbHelper.close();
         }
     }
 }

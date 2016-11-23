@@ -5,14 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 
-
-
 public class CheckQuesten extends AppCompatActivity implements View.OnClickListener {
-
 
     Button toanswer;
     TextView questen;
@@ -23,7 +19,7 @@ public class CheckQuesten extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_questen);
-        switch (MainActivity.n){
+        switch (MainActivity.n) {
             case 1:
                 s = Level1.question[Level1.number];
                 break;
