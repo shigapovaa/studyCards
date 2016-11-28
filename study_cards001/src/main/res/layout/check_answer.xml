@@ -24,21 +24,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/backtolevel"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    style="@style/Widget.AppCompat.Button" />
+                    style="@style/Widget.AppCompat.ImageButton"
+                    android:src="@drawable/ic_clear_black_24dp"/>
 
-                <Button
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/falseB"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    style="@style/Widget.AppCompat.Button" />
+                    style="@style/Widget.AppCompat.ImageButton"
+                    android:src="@drawable/ic_check_black_24dp" />
 
             </LinearLayout>
 
