@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import ru.startandroid.study_cards001.database.DbAdapter;
@@ -14,7 +15,7 @@ import ru.startandroid.study_cards001.database.DbAdapter;
 public class CheckAnswer extends AppCompatActivity implements View.OnClickListener {
     private DbAdapter dbHelper;
 
-    Button trueB, falseB;
+    ImageButton trueB, falseB;
     TextView ansver;
     String s;
     int number;
@@ -53,9 +54,9 @@ public class CheckAnswer extends AppCompatActivity implements View.OnClickListen
                 number = Level7.number;
                 break;
         }
-        trueB = (Button) findViewById(R.id.backtolevel);
+        trueB = (ImageButton) findViewById(R.id.backtolevel);
         trueB.setOnClickListener(this);
-        falseB = (Button) findViewById(R.id.falseB);
+        falseB = (ImageButton) findViewById(R.id.falseB);
         falseB.setOnClickListener(this);
         ansver = (TextView) findViewById(R.id.ansver);
         ansver.setText(s);
